@@ -1,0 +1,44 @@
+v1 - v9
+
+v1: basic
+
+2019.10.27
+
+
+2019.10.28
+v4
+lockSupport
+
+
+v5
+1.AQS code
+*** AQS.unlock() code
+2.threadLocal code
+
+3. 强软弱虚
+
+强 objRef = null 回收
+
+soft 内存不够 回收 (cache: memcache)
+
+weak 只要有gc 就会回收
+强引用指向weak ref 只要强引用消失，弱引用就会回收
+
+threadLocal 只要强引用消失，弱引用就会回收
+弱引用回收后，key指向null，无法访问 但是value 是强引用，同样导致内存泄漏
+所有使用threadLocal，不用了一定要remove
+
+虚引用
+管理堆外内存
+PhantomRef
+写 虚拟机 会用到
+(netty)DirectByteBuffer 直接使用物理内存
+
+*** WeakHashMap code
+
+v6
+
+
+
+
+
