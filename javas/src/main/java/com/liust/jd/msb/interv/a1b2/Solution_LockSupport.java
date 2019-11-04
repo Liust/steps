@@ -2,7 +2,7 @@ package com.liust.jd.msb.interv.a1b2;
 
 import java.util.concurrent.locks.LockSupport;
 
-public class Solution3 {
+public class Solution_LockSupport {
     static Thread t2 = null;
     public static void main(String[] args) throws InterruptedException {
         char[] chars = "abcdefghij".toCharArray();

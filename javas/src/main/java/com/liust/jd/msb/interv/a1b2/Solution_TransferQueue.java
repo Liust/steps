@@ -5,7 +5,7 @@ import sun.jvm.hotspot.runtime.Threads;
 import java.util.concurrent.LinkedTransferQueue;
 import java.util.concurrent.TransferQueue;
 
-public class Solution {
+public class Solution_TransferQueue {
     private static TransferQueue transferQueue = new LinkedTransferQueue();
     public static void main(String[] args) throws InterruptedException {
         char[] chars = "abcdefghij".toCharArray();
