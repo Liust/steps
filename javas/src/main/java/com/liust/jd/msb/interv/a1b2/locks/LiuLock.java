@@ -7,12 +7,12 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class LiuLock extends ReentrantLock {
 
-    public class LiuConditionObject extends ConditionObject {
+    public class LiuConditionObject  {
         private volatile boolean hasSignaled = false;
 
         public void doAwait() throws InterruptedException{
             if(!hasSignaled){
-                await();
+//                await();
             }else {
                 hasSignaled = false;
             }
@@ -22,15 +22,12 @@ public class LiuLock extends ReentrantLock {
             if(getQueueLength() == 0){
                 hasSignaled = true;
             }else {
-                signal();
+//                signal();
             }
         }
     }
 
-    @Override
-    public ConditionObject newCondition(){
-        return new LiuConditionObject();
-    }
+
 
 
 }
