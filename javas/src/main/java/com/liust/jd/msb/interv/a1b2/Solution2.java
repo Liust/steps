@@ -5,9 +5,9 @@ import java.util.concurrent.TransferQueue;
 
 public class Solution2 {
     public static void main(String[] args) throws InterruptedException {
-        char[] chars = "abcdefghij".toCharArray();
-        char[] nums = "0123456789".toCharArray();
-        Object lock = new Object();
+        final char[] chars = "abcdefghij".toCharArray();
+        final char[] nums = "0123456789".toCharArray();
+        final Object lock = new Object();
 
         Thread t1 = new Thread("t1"){
             @Override
@@ -21,7 +21,6 @@ public class Solution2 {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-
                     }
                     lock.notify();
 
@@ -42,9 +41,7 @@ public class Solution2 {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-
                     }
-
                 }
             }
 

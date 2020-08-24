@@ -1,15 +1,13 @@
 package com.liust.jd.msb.interv.a1b2;
 
-import sun.jvm.hotspot.runtime.Threads;
-
 import java.util.concurrent.LinkedTransferQueue;
 import java.util.concurrent.TransferQueue;
 
 public class Solution {
     private static TransferQueue transferQueue = new LinkedTransferQueue();
     public static void main(String[] args) throws InterruptedException {
-        char[] chars = "abcdefghij".toCharArray();
-        char[] nums = "0123456789".toCharArray();
+        final char[] chars = "abcdefghij".toCharArray();
+        final char[] nums = "0123456789".toCharArray();
 
         Thread t1 = new Thread("t1"){
             @Override
