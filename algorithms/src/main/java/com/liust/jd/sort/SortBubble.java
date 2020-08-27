@@ -1,6 +1,6 @@
 package com.liust.jd.sort;
 
-import com.liust.jd.sort.utils.CheckUtil;
+import com.liust.jd.utils.CheckUtil;
 
 import java.util.Arrays;
 

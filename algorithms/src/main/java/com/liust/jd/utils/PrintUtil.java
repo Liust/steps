@@ -1,11 +1,11 @@
-package com.liust.jd.sort.utils;
+package com.liust.jd.utils;
 
 import java.io.PrintStream;
 
 public class PrintUtil {
     private static PrintStream printStream = System.out;
     public static void println(int[] nums){
-        print("msg:[");
+        print("[");
         for (int num:nums) {
             print(num);
             print(",");

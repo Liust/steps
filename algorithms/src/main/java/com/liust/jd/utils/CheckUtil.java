@@ -1,4 +1,4 @@
-package com.liust.jd.sort.utils;
+package com.liust.jd.utils;
 
 public class CheckUtil {
     public static boolean needSort(int[] arr){

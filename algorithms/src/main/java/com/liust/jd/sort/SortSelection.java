@@ -1,7 +1,7 @@
 package com.liust.jd.sort;
 
-import com.liust.jd.sort.utils.CheckUtil;
-import com.liust.jd.sort.utils.PrintUtil;
+import com.liust.jd.utils.CheckUtil;
+import com.liust.jd.utils.PrintUtil;
 
 public class SortSelection extends SortBase{
     /**

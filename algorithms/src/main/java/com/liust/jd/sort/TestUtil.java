@@ -1,6 +1,6 @@
 package com.liust.jd.sort;
 
-import com.liust.jd.sort.utils.PrintUtil;
+import com.liust.jd.utils.PrintUtil;
 
 public class TestUtil {
     public static void main(String[] args) {
