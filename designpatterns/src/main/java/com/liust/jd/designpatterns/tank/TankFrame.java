@@ -8,6 +8,7 @@ import java.awt.event.WindowEvent;
 
 public class TankFrame extends Frame {
     private static int width = 800, height = 600;
+    private Color color = Color.GRAY;
 
     private Tank tank = new Tank(40, 30, Dir.LEFT);
     private Bullet bullet = new Bullet(40, 30, Dir.DOWN);
@@ -108,4 +109,22 @@ public class TankFrame extends Frame {
 //        bullet.paint(g);
     }
 
+    Image offScreenImage = null;
+
+    @Override
+    public void update(Graphics g) {
+        if(null == offScreenImage){
+            offScreenImage = this.createImage(width, height);
+        }
+
+        Graphics graphics = offScreenImage.getGraphics();
+        Color c = graphics.getColor();
+        graphics.setColor(color);
+        graphics.fillRect(0, 0, width, height);
+        graphics.setColor(c);
+        paint(graphics);
+
+        g.drawImage(offScreenImage, 0, 0, null);
+
+    }
 }
