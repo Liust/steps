@@ -10,6 +10,9 @@ public class TankFrame extends Frame {
     private static int width=400, height = 300;
     int x=40, y = 30;
 
+    public boolean bL = false, bU=false, bR = false, bD=false;
+    public boolean moving = true;
+
     TankFrame(){
         setSize(width, height);
         setResizable(false);
@@ -49,8 +52,6 @@ public class TankFrame extends Frame {
                 }
             }
 
-            private boolean bL = false, bU=false, bR = false, bD=false;
-
             @Override
             public void keyPressed(KeyEvent e){
 //                System.out.println("pressed");
@@ -68,6 +69,9 @@ public class TankFrame extends Frame {
                     case KeyEvent.VK_DOWN:
                         bD = true;
                         break;
+                    case KeyEvent.VK_SPACE:
+                        moving = !moving;
+                        break;
 
                     default:
                         break;
@@ -82,5 +86,21 @@ public class TankFrame extends Frame {
         g.fillRect(x, y, 50, 50);
 //        x += 10;
 //        y += 10;
+        if(bL){
+            x -= 10;
+        }
+
+        if(bU){
+            y -=10;
+        }
+
+        if(bR){
+            x += 10;
+        }
+
+        if(bD){
+            y += 10;
+        }
+
     }
 }
