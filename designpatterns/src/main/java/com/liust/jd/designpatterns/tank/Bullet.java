@@ -4,21 +4,37 @@ import java.awt.*;
 
 public class Bullet {
     private int x, y;
+    private int width =10, height = 10;
     private Dir dir = Dir.DOWN;
     private static final int speed = 10;
+    private boolean living = true;
+    private TankFrame tf = null;
 
-    public Bullet(int x, int y, Dir dir) {
+    public Bullet(int x, int y, Dir dir, TankFrame tf) {
         this.x = x;
         this.y = y;
         this.dir = dir;
+        this.tf = tf;
     }
 
     public void paint(Graphics g){
+        if(!isLiving()){
+            tf.bullets.remove(this);
+            return;
+        }
         Color color = g.getColor();
         g.setColor(Color.RED);
-        g.fillOval(x, y, 10, 10);
+        g.fillOval(x, y, width, height);
         g.setColor(color);
         move();
+    }
+
+    public boolean isLiving() {
+        return living;
+    }
+
+    public void setLiving(boolean living) {
+        this.living = living;
     }
 
     private void move() {
@@ -38,6 +54,14 @@ public class Bullet {
             default:
                 break;
         }
+
+        if(x < 0 || y < 0 || x - tf.getX() > tf.getWidth() || y - tf.getY() > tf.getHeight()){
+            die();
+        }
+    }
+
+    private void die() {
+        this.setLiving(false);
     }
 
     public int getX() {
@@ -62,5 +86,33 @@ public class Bullet {
 
     public void setDir(Dir dir) {
         this.dir = dir;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public static int getSpeed() {
+        return speed;
+    }
+
+    public TankFrame getTf() {
+        return tf;
+    }
+
+    public void setTf(TankFrame tf) {
+        this.tf = tf;
     }
 }

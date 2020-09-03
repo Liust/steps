@@ -5,13 +5,14 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 
 public class TankFrame extends Frame {
     private static int width = 800, height = 600;
     private Color color = Color.GRAY;
 
-    private Tank tank = new Tank(40, 30, Dir.LEFT);
-    private Bullet bullet = new Bullet(40, 30, Dir.DOWN);
+    private Tank tank = new Tank(100, 100, Dir.LEFT, this);
+    public java.util.List<Bullet> bullets = new ArrayList<Bullet>();
 
     TankFrame(){
         setSize(width, height);
@@ -50,6 +51,9 @@ public class TankFrame extends Frame {
                     case KeyEvent.VK_BACK_SPACE:
                         quit();
                         break;
+                    case KeyEvent.VK_SPACE:
+                        tank.fire();
+                        break;
 
                     default:
                         break;
@@ -73,9 +77,6 @@ public class TankFrame extends Frame {
                         break;
                     case KeyEvent.VK_DOWN:
                         bD = true;
-                        break;
-                    case KeyEvent.VK_SPACE:
-                        tank.fire();
                         break;
 
                     default:
@@ -105,8 +106,18 @@ public class TankFrame extends Frame {
 
     @Override
     public void paint(Graphics g) {
+
+        g.drawString("子弹数量："+bullets.size(), 10, 60);
+
         tank.paint(g);
 //        bullet.paint(g);
+//        for(Bullet b : bullets){
+//            b.paint(g);
+//        }
+        for(int i = 0; i < bullets.size(); i++){
+            Bullet b = bullets.get(i);
+            b.paint(g);
+        }
     }
 
     Image offScreenImage = null;

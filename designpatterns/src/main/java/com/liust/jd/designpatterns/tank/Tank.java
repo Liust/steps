@@ -10,12 +10,16 @@ public class Tank {
     private Dir dir = Dir.DOWN;
     private static final int speed = 5;
     public boolean moving = true;
+    private boolean living = true;
+    private TankFrame tf = null;
+
     List<Bullet> bulletList = new ArrayList<Bullet>();
 
-    public Tank(int x, int y, Dir dir) {
+    public Tank(int x, int y, Dir dir, TankFrame tf) {
         this.x = x;
         this.y = y;
         this.dir = dir;
+        this.tf = tf;
     }
 
     public void paint(Graphics g){
@@ -49,8 +53,10 @@ public class Tank {
 
     public void fire(){
         Postion postion = computeBulletPos();
-        Bullet bullet = new Bullet(postion.getX(), postion.getY(), this.getDir());
-        bulletList.add(bullet);
+        Bullet bullet = new Bullet(postion.getX(), postion.getY(), this.getDir(), this.tf);
+//        bulletList.add(bullet);
+        tf.bullets.add(bullet);
+
     }
 
     public Postion computeBulletPos(){
