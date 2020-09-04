@@ -1,6 +1,7 @@
 package com.liust.jd.designpatterns.tank;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,7 @@ public class Tank {
     public boolean moving = true;
     private boolean living = true;
     private TankFrame tf = null;
+    private BufferedImage image = null;
 
     List<Bullet> bulletList = new ArrayList<Bullet>();
 
@@ -24,11 +26,24 @@ public class Tank {
 
     public void paint(Graphics g){
         move();
-        g.fillRect(x, y, width, height);
-
-        for(Bullet bullet : bulletList){
-            bullet.paint(g);
+//        g.fillRect(x, y, width, height);
+        BufferedImage tank = null;
+        switch (getDir()){
+            case LEFT:
+                tank = ResourceMgr.tankL;
+                break;
+            case UP:
+                tank = ResourceMgr.tankU;
+                break;
+            case RIGHT:
+                tank = ResourceMgr.tankR;
+                break;
+            case DOWN:
+                tank = ResourceMgr.tankD;
+                break;
         }
+        g.drawImage(tank, x, y, null);
+        this.setImage(tank);
     }
 
     private void move() {
@@ -90,6 +105,14 @@ public class Tank {
         return pos;
     }
 
+    public BufferedImage getImage() {
+        return image;
+    }
+
+    public void setImage(BufferedImage image) {
+        this.image = image;
+    }
+
     public int getX() {
         return x;
     }
@@ -123,6 +146,9 @@ public class Tank {
     }
 
     public int getWidth() {
+        if(getImage() != null){
+            return getImage().getWidth();
+        }
         return width;
     }
 
@@ -131,6 +157,9 @@ public class Tank {
     }
 
     public int getHeight() {
+        if(getImage() != null){
+            return getImage().getHeight();
+        }
         return height;
     }
 

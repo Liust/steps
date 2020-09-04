@@ -1,14 +1,16 @@
 package com.liust.jd.designpatterns.tank;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class Bullet {
-    private int x, y;
+    public static int x, y;
     private int width =10, height = 10;
     private Dir dir = Dir.DOWN;
     private static final int speed = 10;
     private boolean living = true;
     private TankFrame tf = null;
+    private BufferedImage image;
 
     public Bullet(int x, int y, Dir dir, TankFrame tf) {
         this.x = x;
@@ -22,10 +24,23 @@ public class Bullet {
             tf.bullets.remove(this);
             return;
         }
-        Color color = g.getColor();
-        g.setColor(Color.RED);
-        g.fillOval(x, y, width, height);
-        g.setColor(color);
+
+        switch (getDir()){
+            case LEFT:
+                setImage(ResourceMgr.bulletL);
+                break;
+            case UP:
+                setImage(ResourceMgr.bulletU);
+                break;
+            case RIGHT:
+                setImage(ResourceMgr.bulletR);
+                break;
+            case DOWN:
+                setImage(ResourceMgr.bulletD);
+                break;
+        }
+
+        g.drawImage(getImage(), x, y, null);
         move();
     }
 
@@ -64,6 +79,14 @@ public class Bullet {
         this.setLiving(false);
     }
 
+    public BufferedImage getImage() {
+        return image;
+    }
+
+    public void setImage(BufferedImage image) {
+        this.image = image;
+    }
+
     public int getX() {
         return x;
     }
@@ -89,6 +112,9 @@ public class Bullet {
     }
 
     public int getWidth() {
+        if(getImage() != null){
+            return getImage().getWidth();
+        }
         return width;
     }
 
@@ -97,6 +123,10 @@ public class Bullet {
     }
 
     public int getHeight() {
+
+        if(getImage() != null){
+            return getImage().getHeight();
+        }
         return height;
     }
 
