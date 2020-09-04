@@ -1,18 +1,22 @@
 package com.liust.jd.designpatterns.tank;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Frame;
+import java.awt.Image;
+import java.awt.Graphics;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import java.util.List;
 
 public class TankFrame extends Frame {
     private static int width = 800, height = 600;
     private Color color = Color.GRAY;
 
     private Tank tank = new Tank(100, 100, Dir.LEFT, this);
-    public java.util.List<Bullet> bullets = new ArrayList<Bullet>();
+    public List<Bullet> bullets = new ArrayList<Bullet>();
 
     TankFrame(){
         setSize(width, height);
