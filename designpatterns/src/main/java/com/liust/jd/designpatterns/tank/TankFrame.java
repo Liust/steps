@@ -12,7 +12,7 @@ public class TankFrame extends Frame {
     private static int width = 800, height = 600;
     private Color color = Color.GRAY;
 
-    private Tank tank = new Tank(100, 100, Dir.LEFT, Group.GOOD, this);
+    private Tank tank = new Tank(150, 150, Dir.DOWN, Group.GOOD, this);
     public List<Bullet> bullets = new ArrayList<Bullet>();
     public List<Tank> tanks = new ArrayList<Tank>();
     public List<Explode> explodes = new ArrayList<Explode>();
@@ -42,15 +42,27 @@ public class TankFrame extends Frame {
                     case KeyEvent.VK_LEFT:
                         bL = false;
                         break;
+//                    case KeyEvent.VK_A:
+//                        bL = false;
+//                        break;
                     case KeyEvent.VK_UP:
                         bU = false;
                         break;
+//                    case KeyEvent.VK_W:
+//                        bU = false;
+//                        break;
                     case KeyEvent.VK_RIGHT:
                         bR = false;
                         break;
+//                    case KeyEvent.VK_D:
+//                        bR = false;
+//                        break;
                     case KeyEvent.VK_DOWN:
                         bD = false;
                         break;
+//                    case KeyEvent.VK_S:
+//                        bD = false;
+//                        break;
                     case KeyEvent.VK_BACK_SPACE:
                         quit();
                         break;
