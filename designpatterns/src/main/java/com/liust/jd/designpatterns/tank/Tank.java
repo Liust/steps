@@ -10,7 +10,7 @@ public class Tank {
     private int width = 50, height = 50;
     private Dir dir = Dir.DOWN;
     private static final int speed = 5;
-    public boolean moving = true;
+    public boolean moving = false;
     private boolean living = true;
     private TankFrame tf = null;
     private BufferedImage image = null;

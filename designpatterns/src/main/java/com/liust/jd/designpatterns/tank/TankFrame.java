@@ -17,6 +17,7 @@ public class TankFrame extends Frame {
 
     private Tank tank = new Tank(100, 100, Dir.LEFT, this);
     public List<Bullet> bullets = new ArrayList<Bullet>();
+    public List<Tank> tanks = new ArrayList<Tank>();
 
     TankFrame(){
         setSize(width, height);
@@ -120,6 +121,11 @@ public class TankFrame extends Frame {
 //        }
         for(int i = 0; i < bullets.size(); i++){
             Bullet b = bullets.get(i);
+            b.paint(g);
+        }
+
+        for(int i = 0; i < tanks.size(); i++){
+            Tank b = tanks.get(i);
             b.paint(g);
         }
     }
