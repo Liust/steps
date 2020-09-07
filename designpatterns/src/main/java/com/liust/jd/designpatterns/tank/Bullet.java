@@ -77,7 +77,7 @@ public class Bullet {
         }
     }
 
-    private void die() {
+    public void die() {
         this.setLiving(false);
     }
 

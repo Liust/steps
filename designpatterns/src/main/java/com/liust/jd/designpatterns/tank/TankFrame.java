@@ -1,9 +1,6 @@
 package com.liust.jd.designpatterns.tank;
 
-import java.awt.Color;
-import java.awt.Frame;
-import java.awt.Image;
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
@@ -112,13 +109,22 @@ public class TankFrame extends Frame {
     @Override
     public void paint(Graphics g) {
 
-        g.drawString("子弹数量："+bullets.size(), 10, 60);
+        g.drawString("B数量：" + bullets.size(), 10, 60);
+        g.drawString("T数量：" + tanks.size(), 110, 60);
 
         tank.paint(g);
 //        bullet.paint(g);
 //        for(Bullet b : bullets){
 //            b.paint(g);
 //        }
+
+        //碰撞检测
+        for (int i = 0; i < bullets.size(); i++) {
+            for (int j = 0; j < tanks.size(); j++) {
+                pengTest(bullets.get(i), tanks.get(j));
+            }
+        }
+
         for(int i = 0; i < bullets.size(); i++){
             Bullet b = bullets.get(i);
             b.paint(g);
@@ -127,6 +133,15 @@ public class TankFrame extends Frame {
         for(int i = 0; i < tanks.size(); i++){
             Tank b = tanks.get(i);
             b.paint(g);
+        }
+    }
+
+    private void pengTest(Bullet bullet, Tank tank) {
+        Rectangle rectangleB = new Rectangle(bullet.getX(), bullet.getY(), bullet.getWidth(), bullet.getHeight());
+        Rectangle rectangleT = new Rectangle(tank.getX(), tank.getY(), tank.getWidth(), tank.getHeight());
+        if(rectangleB.intersects(rectangleT)){
+            bullet.die();
+            tank.die();
         }
     }
 

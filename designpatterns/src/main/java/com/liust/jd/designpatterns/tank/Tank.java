@@ -9,8 +9,8 @@ public class Tank {
     private int x, y;
     private int width = 50, height = 50;
     private Dir dir = Dir.DOWN;
-    private static final int speed = 5;
-    public boolean moving = false;
+    private static final int speed = 2;
+    public boolean moving = true;
     private boolean living = true;
     private TankFrame tf = null;
     private BufferedImage image = null;
@@ -26,7 +26,17 @@ public class Tank {
         this.tf = tf;
     }
 
+    public void die() {
+        this.setLiving(false);
+    }
+
     public void paint(Graphics g){
+
+        if(!isLiving()){
+            tf.tanks.remove(this);
+            return;
+        }
+
         move();
 //        g.fillRect(x, y, width, height);
         BufferedImage tank = null;
@@ -167,6 +177,14 @@ public class Tank {
 
     public void setHeight(int height) {
         this.height = height;
+    }
+
+    public boolean isLiving() {
+        return living;
+    }
+
+    public void setLiving(boolean living) {
+        this.living = living;
     }
 
     public Group getGroup() {
