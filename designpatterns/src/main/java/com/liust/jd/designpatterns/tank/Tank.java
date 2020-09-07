@@ -14,13 +14,15 @@ public class Tank {
     private boolean living = true;
     private TankFrame tf = null;
     private BufferedImage image = null;
+    private Group group;
 
     List<Bullet> bulletList = new ArrayList<Bullet>();
 
-    public Tank(int x, int y, Dir dir, TankFrame tf) {
+    public Tank(int x, int y, Dir dir, Group group, TankFrame tf) {
         this.x = x;
         this.y = y;
         this.dir = dir;
+        this.group = group;
         this.tf = tf;
     }
 
@@ -68,7 +70,7 @@ public class Tank {
 
     public void fire(){
         Postion postion = computeBulletPos();
-        Bullet bullet = new Bullet(postion.getX(), postion.getY(), this.getDir(), this.tf);
+        Bullet bullet = new Bullet(postion.getX(), postion.getY(), this.getDir(), getGroup(), this.tf);
 //        bulletList.add(bullet);
         tf.bullets.add(bullet);
 
@@ -165,5 +167,13 @@ public class Tank {
 
     public void setHeight(int height) {
         this.height = height;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
     }
 }

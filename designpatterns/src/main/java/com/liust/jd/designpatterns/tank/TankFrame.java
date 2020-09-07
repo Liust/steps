@@ -15,7 +15,7 @@ public class TankFrame extends Frame {
     private static int width = 800, height = 600;
     private Color color = Color.GRAY;
 
-    private Tank tank = new Tank(100, 100, Dir.LEFT, this);
+    private Tank tank = new Tank(100, 100, Dir.LEFT, Group.GOOD, this);
     public List<Bullet> bullets = new ArrayList<Bullet>();
     public List<Tank> tanks = new ArrayList<Tank>();
 

@@ -11,11 +11,13 @@ public class Bullet {
     private boolean living = true;
     private TankFrame tf = null;
     private BufferedImage image;
+    private Group group;
 
-    public Bullet(int x, int y, Dir dir, TankFrame tf) {
+    public Bullet(int x, int y, Dir dir, Group group, TankFrame tf) {
         this.x = x;
         this.y = y;
         this.dir = dir;
+        this.group = group;
         this.tf = tf;
     }
 
