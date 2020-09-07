@@ -15,6 +15,7 @@ public class TankFrame extends Frame {
     private Tank tank = new Tank(100, 100, Dir.LEFT, Group.GOOD, this);
     public List<Bullet> bullets = new ArrayList<Bullet>();
     public List<Tank> tanks = new ArrayList<Tank>();
+    public List<Explode> explodes = new ArrayList<Explode>();
 
     TankFrame(){
         setSize(width, height);
@@ -111,6 +112,7 @@ public class TankFrame extends Frame {
 
         g.drawString("B数量：" + bullets.size(), 10, 60);
         g.drawString("T数量：" + tanks.size(), 110, 60);
+        g.drawString("E数量：" + explodes.size(), 210, 60);
 
         tank.paint(g);
 //        bullet.paint(g);
@@ -134,6 +136,15 @@ public class TankFrame extends Frame {
             Tank b = tanks.get(i);
             b.paint(g);
         }
+
+        for(int i = 0; i < explodes.size(); i++){
+            Explode b = explodes.get(i);
+            if(b.isLiving()) {
+                b.paint(g);
+            }else {
+                explodes.remove(b);
+            }
+        }
     }
 
     private void pengTest(Bullet bullet, Tank tank) {
@@ -142,6 +153,7 @@ public class TankFrame extends Frame {
         if(rectangleB.intersects(rectangleT)){
             bullet.die();
             tank.die();
+            explodes.add(new Explode(tank.getX(), tank.getY(), this));
         }
     }
 

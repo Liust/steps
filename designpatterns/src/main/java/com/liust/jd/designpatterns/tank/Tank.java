@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Tank {
     private int x, y;
@@ -14,6 +15,7 @@ public class Tank {
     private boolean living = true;
     private TankFrame tf = null;
     private BufferedImage image = null;
+    private Random random = new Random();
     private Group group;
 
     List<Bullet> bulletList = new ArrayList<Bullet>();
@@ -56,6 +58,10 @@ public class Tank {
         }
         g.drawImage(tank, x, y, null);
         this.setImage(tank);
+
+        if(random.nextInt() % 10 == 8){
+            this.fire();
+        }
     }
 
     private void move() {
