@@ -16,6 +16,42 @@
         <module>bdata</module>
         <module>javas</module>
     </modules>
-
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <buildEnv>dev</buildEnv>
+                <log.path>/export/logs/steps</log.path>
+                <log.level>DEBUG</log.level>
+            </properties>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <buildEnv>test</buildEnv>
+                <log.path>/export/logs/steps</log.path>
+                <log.level>DEBUG</log.level>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod_pre</id>
+            <properties>
+                <buildEnv>prod_pre</buildEnv>
+                <log.path>/export/logs/steps</log.path>
+                <log.level>DEBUG</log.level>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <buildEnv>prod</buildEnv>
+                <log.path>/export/logs/steps</log.path>
+                <log.level>DEBUG</log.level>
+            </properties>
+        </profile>
+    </profiles>
 
 </project>
