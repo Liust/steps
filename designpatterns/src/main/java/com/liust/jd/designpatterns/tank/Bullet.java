@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Bullet {
-    public static int x, y;
+    public int x, y;
     private int width =10, height = 10;
     private Dir dir = Dir.DOWN;
     private static final int speed = 10;
@@ -24,7 +24,7 @@ public class Bullet {
     public void paint(Graphics g){
         if(!isLiving()){
             tf.bullets.remove(this);
-            return;
+//            return;
         }
 
         switch (getDir()){
