@@ -44,22 +44,22 @@ public class Tank {
         BufferedImage tank = null;
         switch (getDir()){
             case LEFT:
-                tank = ResourceMgr.tankL;
+                tank = ResourceMgr.goodTankL;
                 break;
             case UP:
-                tank = ResourceMgr.tankU;
+                tank = ResourceMgr.goodTankU;
                 break;
             case RIGHT:
-                tank = ResourceMgr.tankR;
+                tank = ResourceMgr.goodTankR;
                 break;
             case DOWN:
-                tank = ResourceMgr.tankD;
+                tank = ResourceMgr.goodTankD;
                 break;
         }
         g.drawImage(tank, x, y, null);
         this.setImage(tank);
 
-        if(random.nextInt() % 10 == 8){
+        if(random.nextInt(10) % 10 == 8){
             this.fire();
         }
     }
