@@ -12,6 +12,7 @@ public class Bullet {
     private TankFrame tf = null;
     private BufferedImage image;
     private Group group;
+    Rectangle rect =  new Rectangle();
 
     public Bullet(int x, int y, Dir dir, Group group, TankFrame tf) {
         this.x = x;
@@ -19,6 +20,11 @@ public class Bullet {
         this.dir = dir;
         this.group = group;
         this.tf = tf;
+
+        rect.x = this.getX();
+        rect.y = this.getY();
+        rect.height = this.getHeight();
+        rect.width = this.getWidth();
     }
 
     public void paint(Graphics g){
@@ -71,6 +77,10 @@ public class Bullet {
             default:
                 break;
         }
+
+        // update
+        rect.x = this.getX();
+        rect.y = this.getY();
 
         if(x < 0 || y < 0 || x - tf.getX() > tf.getWidth() || y - tf.getY() > tf.getHeight()){
             die();
@@ -146,5 +156,21 @@ public class Bullet {
 
     public void setTf(TankFrame tf) {
         this.tf = tf;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
+
+    public Rectangle getRect() {
+        return rect;
+    }
+
+    public void setRect(Rectangle rect) {
+        this.rect = rect;
     }
 }

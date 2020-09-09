@@ -160,9 +160,11 @@ public class TankFrame extends Frame {
     }
 
     private void pengTest(Bullet bullet, Tank tank) {
-        Rectangle rectangleB = new Rectangle(bullet.getX(), bullet.getY(), bullet.getWidth(), bullet.getHeight());
-        Rectangle rectangleT = new Rectangle(tank.getX(), tank.getY(), tank.getWidth(), tank.getHeight());
-        if(rectangleB.intersects(rectangleT)){
+        if(bullet.getGroup() == tank.getGroup()){
+            return;
+        }
+
+        if(bullet.getRect().intersects(tank.getRect())){
             bullet.die();
             tank.die();
             explodes.add(new Explode(tank.getX(), tank.getY(), this));

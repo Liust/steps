@@ -5,7 +5,7 @@ public class BootStrap {
         TankFrame tf = new TankFrame();
 
         for (int i = 0; i < 5; i++) {
-            tf.tanks.add(new Tank((tf.getX() + 30 )+ i*50, tf.getY() + 60, Dir.DOWN, Group.BAD, tf));
+            tf.tanks.add(new Tank((tf.getX() + 30 )+ i*80, tf.getY() + 60, Dir.DOWN, Group.BAD, tf));
         }
 
         while (true){

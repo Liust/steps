@@ -2,8 +2,6 @@ package com.liust.jd.designpatterns.tank;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class Tank {
@@ -17,8 +15,7 @@ public class Tank {
     private BufferedImage image = null;
     private Random random = new Random();
     private Group group;
-
-    List<Bullet> bulletList = new ArrayList<Bullet>();
+    Rectangle rect =  new Rectangle();
 
     public Tank(int x, int y, Dir dir, Group group, TankFrame tf) {
         this.x = x;
@@ -26,6 +23,11 @@ public class Tank {
         this.dir = dir;
         this.group = group;
         this.tf = tf;
+
+        rect.x = this.getX();
+        rect.y = this.getY();
+        rect.height = this.getHeight();
+        rect.width = this.getWidth();
     }
 
     public void die() {
@@ -82,6 +84,9 @@ public class Tank {
             default:
                 break;
         }
+        // update
+        rect.x = this.getX();
+        rect.y = this.getY();
     }
 
     public void fire(){
@@ -199,5 +204,33 @@ public class Tank {
 
     public void setGroup(Group group) {
         this.group = group;
+    }
+
+    public static int getSpeed() {
+        return speed;
+    }
+
+    public TankFrame getTf() {
+        return tf;
+    }
+
+    public void setTf(TankFrame tf) {
+        this.tf = tf;
+    }
+
+    public Random getRandom() {
+        return random;
+    }
+
+    public void setRandom(Random random) {
+        this.random = random;
+    }
+
+    public Rectangle getRect() {
+        return rect;
+    }
+
+    public void setRect(Rectangle rect) {
+        this.rect = rect;
     }
 }
