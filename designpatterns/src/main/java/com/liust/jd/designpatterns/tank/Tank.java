@@ -8,7 +8,7 @@ public class Tank {
     private int x, y;
     private int width = 50, height = 50;
     private Dir dir = Dir.DOWN;
-    private static final int speed = 2;
+    private static final int speed = 8;
     public boolean moving = true;
     private boolean living = true;
     private TankFrame tf = null;
@@ -61,9 +61,39 @@ public class Tank {
         g.drawImage(tank, x, y, null);
         this.setImage(tank);
 
-        if(random.nextInt(10) % 10 == 8){
+        if(getGroup() == Group.BAD && random.nextInt(100) > 90){
             this.fire();
         }
+
+        if(getGroup() == Group.BAD && random.nextInt(100) > 90){
+            this.randomDir();
+        }
+
+        boundsCheck();
+    }
+
+    private void boundsCheck() {
+
+        if(getX() - tf.getX() < 2){
+            this.setX(2);
+        }
+
+        if(getY() - tf.getY() < 2){
+            this.setY(2);
+        }
+
+        if(this.getX() - tf.getX() > tf.getWidth() - this.getWidth()){
+            setX(tf.getX()+ tf.getWidth() - this.getWidth());
+        }
+
+        if(this.getY() - tf.getY() > tf.getHeight()- this.getHeight()){
+            setY(tf.getY() + tf.getHeight() - this.getHeight());
+        }
+
+    }
+
+    private void randomDir() {
+        this.setDir(Dir.values()[random.nextInt(4)]);
     }
 
     private void move() {
