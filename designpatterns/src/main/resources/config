@@ -1,0 +1,4 @@
+#init configuration
+initTankCount=1
+frameWidth=800
+frameHeight=600

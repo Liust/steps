@@ -73,19 +73,22 @@ public class Tank {
     }
 
     private void boundsCheck() {
-
-        if(getX() - tf.getX() < 2){
-            this.setX(2);
+        // left
+        if(getX() - tf.getX() < getWidth() + 2){
+            this.setX(getWidth() + 2);
         }
 
-        if(getY() - tf.getY() < 2){
-            this.setY(2);
-        }
-
+        // right
         if(this.getX() - tf.getX() > tf.getWidth() - this.getWidth()){
             setX(tf.getX()+ tf.getWidth() - this.getWidth());
         }
 
+        // up
+        if(getY() - tf.getY() < getHeight() + 2){
+            this.setY(getHeight() + 2);
+        }
+
+        // down
         if(this.getY() - tf.getY() > tf.getHeight()- this.getHeight()){
             setY(tf.getY() + tf.getHeight() - this.getHeight());
         }
@@ -124,6 +127,10 @@ public class Tank {
         Bullet bullet = new Bullet(postion.getX(), postion.getY(), this.getDir(), getGroup(), this.tf);
 //        bulletList.add(bullet);
         tf.bullets.add(bullet);
+
+        new Thread( ()->{
+            new Audio(Audio.TANK_FIRE).play();
+        }).start();
 
     }
 

@@ -113,6 +113,9 @@ public class TankFrame extends Frame {
                 }
             }
         });
+
+//        Audio a = new Audio("audio/war1.wav");
+//        a.loop();
     }
 
     private void quit() {

@@ -12,6 +12,10 @@ public class Explode {
         this.x = x;
         this.y = y;
         this.tf = tf;
+
+        new Thread( ()->{
+            new Audio(Audio.EXPLODE).play();
+        }).start();
     }
 
     public void paint(Graphics g){

@@ -10,6 +10,10 @@ import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.SourceDataLine;
 
 public class Audio {
+	public static String EXPLODE = "audio/explode.wav";
+	public static String  TANK_FIRE = "audio/tank_fire.wav";
+	public static String TANK_MOVE = "audio/tank_move.wav";
+	public static String  BGM = "audio/war1.wav";
 
 	byte[] b = new byte[1024 * 1024 * 15];
 
@@ -67,7 +71,7 @@ public class Audio {
 			while ((len = audioInputStream.read(b)) > 0) {
 				sourceDataLine.write(b, 0, len);
 			}
-			// audioInputStream.reset();
+//			 audioInputStream.reset();
 
 			sourceDataLine.drain();
 			sourceDataLine.close();
@@ -88,7 +92,9 @@ public class Audio {
 	}
 
 	public static void main(String[] args) {
-		// Audio a = new Audio("audio/explode.wav");
+//		 Audio a = new Audio("audio/explode.wav");
+//		 Audio a = new Audio("audio/tank_fire.wav");
+//		 Audio a = new Audio("audio/tank_move.wav");
 		Audio a = new Audio("audio/war1.wav");
 		a.loop();
 
