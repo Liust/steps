@@ -46,16 +46,16 @@ public class Tank {
         BufferedImage tank = null;
         switch (getDir()){
             case LEFT:
-                tank = ResourceMgr.goodTankL;
+                tank = (group == Group.BAD ? ResourceMgr.badTankL : ResourceMgr.goodTankL);
                 break;
             case UP:
-                tank = ResourceMgr.goodTankU;
+                tank = (group == Group.BAD ? ResourceMgr.badTankU : ResourceMgr.goodTankU);
                 break;
             case RIGHT:
-                tank = ResourceMgr.goodTankR;
+                tank = (group == Group.BAD ? ResourceMgr.badTankR : ResourceMgr.goodTankR);
                 break;
             case DOWN:
-                tank = ResourceMgr.goodTankD;
+                tank = (group == Group.BAD ? ResourceMgr.badTankD : ResourceMgr.goodTankD);
                 break;
         }
         g.drawImage(tank, x, y, null);
@@ -74,8 +74,8 @@ public class Tank {
 
     private void boundsCheck() {
         // left
-        if(getX() - tf.getX() < getWidth() + 2){
-            this.setX(getWidth() + 2);
+        if(getX() - tf.getX() < 2){
+            this.setX(2);
         }
 
         // right
@@ -83,9 +83,9 @@ public class Tank {
             setX(tf.getX()+ tf.getWidth() - this.getWidth());
         }
 
-        // up
-        if(getY() - tf.getY() < getHeight() + 2){
-            this.setY(getHeight() + 2);
+        // up todo there is a bug
+        if(getY() - tf.getY() < getHeight() + 50){
+            this.setY(getHeight() + 50);
         }
 
         // down
