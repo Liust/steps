@@ -2,12 +2,12 @@ package com.liust.jd.designpatterns.tank.fire;
 
 import com.liust.jd.designpatterns.tank.*;
 
-public class BasicFire implements Fire {
+public class DefaultFireStrategy implements FireStrategy {
 
-    private static BasicFire fire = new BasicFire();
-    private BasicFire(){}
+    private static DefaultFireStrategy fire = new DefaultFireStrategy();
+    private DefaultFireStrategy(){}
 
-    public static BasicFire getInstance(){
+    public static DefaultFireStrategy getInstance(){
         return fire;
     }
 

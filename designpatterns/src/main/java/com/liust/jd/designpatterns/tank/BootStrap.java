@@ -1,6 +1,6 @@
 package com.liust.jd.designpatterns.tank;
 
-import com.liust.jd.designpatterns.tank.fire.BasicFire;
+import com.liust.jd.designpatterns.tank.fire.DefaultFireStrategy;
 
 public class BootStrap {
     public static void main(String[] args) throws InterruptedException {
@@ -8,7 +8,7 @@ public class BootStrap {
         Integer tankCount = Integer.parseInt((String)PropertyMgr.get("initTankCount"));
 
         for (int i = 0; i < tankCount; i++) {
-            tf.tanks.add(new Tank((tf.getX() + 30 )+ i*80, tf.getY() + 60, Dir.DOWN, Group.BAD, tf, BasicFire.getInstance()));
+            tf.tanks.add(new Tank((tf.getX() + 30 )+ i*80, tf.getY() + 60, Dir.DOWN, Group.BAD, tf, DefaultFireStrategy.getInstance()));
         }
 
         new Thread( () ->{

@@ -1,6 +1,6 @@
 package com.liust.jd.designpatterns.tank;
 
-import com.liust.jd.designpatterns.tank.fire.Fire;
+import com.liust.jd.designpatterns.tank.fire.FireStrategy;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -18,15 +18,15 @@ public class Tank {
     private Random random = new Random();
     private Group group;
     Rectangle rect =  new Rectangle();
-    Fire fire;
+    FireStrategy fireStrategy;
 
-    public Tank(int x, int y, Dir dir, Group group, TankFrame tf, Fire fire) {
+    public Tank(int x, int y, Dir dir, Group group, TankFrame tf, FireStrategy fireStrategy) {
         this.x = x;
         this.y = y;
         this.dir = dir;
         this.group = group;
         this.tf = tf;
-        this.fire = fire;
+        this.fireStrategy = fireStrategy;
 
         rect.x = this.getX();
         rect.y = this.getY();
@@ -130,7 +130,7 @@ public class Tank {
 
 //        fire.fire();
         Postion postion = computeBulletPos();
-        fire.fire(postion.getX(), postion.getY(), this.getDir(), getGroup(), this.tf);
+        fireStrategy.fire(postion.getX(), postion.getY(), this.getDir(), getGroup(), this.tf);
 
     }
 

@@ -2,11 +2,11 @@ package com.liust.jd.designpatterns.tank.fire;
 
 import com.liust.jd.designpatterns.tank.*;
 
-public class HighFire implements Fire {
+public class HighFireStrategy implements FireStrategy {
 
-    private static HighFire instance = new HighFire();
-    private HighFire(){}
-    public static HighFire getInstance(){
+    private static HighFireStrategy instance = new HighFireStrategy();
+    private HighFireStrategy(){}
+    public static HighFireStrategy getInstance(){
         return instance;
     }
 
