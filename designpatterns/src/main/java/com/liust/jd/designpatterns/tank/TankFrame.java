@@ -1,5 +1,8 @@
 package com.liust.jd.designpatterns.tank;
 
+import com.liust.jd.designpatterns.tank.fire.BasicFire;
+import com.liust.jd.designpatterns.tank.fire.HighFire;
+
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -12,7 +15,7 @@ public class TankFrame extends Frame {
     private static int width = 800, height = 600;
     private Color color = Color.GRAY;
 
-    private Tank tank = new Tank(150, 150, Dir.DOWN, Group.GOOD, this);
+    private Tank tank = new Tank(150, 150, Dir.DOWN, Group.GOOD, this, HighFire.getInstance());
     public List<Bullet> bullets = new ArrayList<Bullet>();
     public List<Tank> tanks = new ArrayList<Tank>();
     public List<Explode> explodes = new ArrayList<Explode>();
