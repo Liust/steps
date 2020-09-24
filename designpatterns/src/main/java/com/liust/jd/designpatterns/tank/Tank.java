@@ -130,7 +130,8 @@ public class Tank {
 
 //        fire.fire();
         Postion postion = computeBulletPos();
-        fireStrategy.fire(postion.getX(), postion.getY(), this.getDir(), getGroup(), this.tf);
+        tf.getFactory().createBullet(postion, this.getDir(), getGroup(), tf, fireStrategy);
+//        fireStrategy.fire(postion.getX(), postion.getY(), this.getDir(), getGroup(), this.tf);
 
     }
 

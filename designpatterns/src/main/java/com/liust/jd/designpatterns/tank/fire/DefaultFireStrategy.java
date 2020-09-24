@@ -19,7 +19,7 @@ public class DefaultFireStrategy implements FireStrategy {
             new Audio(Audio.TANK_FIRE).play();
         }).start();
 
-        tf.bullets.add(bullet);
+//        tf.bullets.add(bullet);
 
     }
 }

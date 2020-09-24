@@ -1,4 +1,4 @@
 #init configuration
-initTankCount=1
+initTankCount=2
 frameWidth=800
 frameHeight=600

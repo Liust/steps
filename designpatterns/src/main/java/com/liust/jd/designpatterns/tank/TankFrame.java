@@ -1,6 +1,7 @@
 package com.liust.jd.designpatterns.tank;
 
-import com.liust.jd.designpatterns.tank.fire.HighFireStrategy;
+import com.liust.jd.designpatterns.tank.factory.GameObjectFactory;
+import com.liust.jd.designpatterns.tank.factory.DefaultFactory;
 
 import java.awt.*;
 import java.awt.event.KeyAdapter;
@@ -14,7 +15,9 @@ public class TankFrame extends Frame {
     private static int width = 800, height = 600;
     private Color color = Color.GRAY;
 
-    private Tank tank = new Tank(150, 150, Dir.DOWN, Group.GOOD, this, HighFireStrategy.getInstance());
+    GameObjectFactory factory = new DefaultFactory();
+
+    private Tank tank = factory.createGoodTank(this);
     public List<Bullet> bullets = new ArrayList<Bullet>();
     public List<Tank> tanks = new ArrayList<Tank>();
     public List<Explode> explodes = new ArrayList<Explode>();
@@ -172,7 +175,7 @@ public class TankFrame extends Frame {
         if(bullet.getRect().intersects(tank.getRect())){
             bullet.die();
             tank.die();
-            explodes.add(new Explode(tank.getX(), tank.getY(), this));
+            explodes.add(factory.createExplore(tank.getX(), tank.getY(), this));
         }
     }
 
@@ -193,5 +196,13 @@ public class TankFrame extends Frame {
 
         g.drawImage(offScreenImage, 0, 0, null);
 
+    }
+
+    public GameObjectFactory getFactory() {
+        return factory;
+    }
+
+    public void setFactory(GameObjectFactory factory) {
+        this.factory = factory;
     }
 }
