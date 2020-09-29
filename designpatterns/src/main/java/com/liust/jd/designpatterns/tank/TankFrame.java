@@ -143,6 +143,7 @@ public class TankFrame extends Frame {
         //碰撞检测
         for (int i = 0; i < bullets.size(); i++) {
             for (int j = 0; j < tanks.size(); j++) {
+                //todo tank method or bullet method is better
                 pengTest(bullets.get(i), tanks.get(j));
             }
         }
