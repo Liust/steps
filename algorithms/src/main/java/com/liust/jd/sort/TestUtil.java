@@ -1,5 +1,6 @@
 package com.liust.jd.sort;
 
+import com.liust.jd.sort.insert.SortInsertion;
 import com.liust.jd.utils.PrintUtil;
 
 public class TestUtil {
@@ -7,7 +8,7 @@ public class TestUtil {
         SortBase sortBase = getSortBase();
 //        SortBase sortBase = new SortBubble();
 
-        int[] data = Data.getRandomDataArr(10);
+        int[] data = Data.getRandomDataArr(30, 10);
         PrintUtil.println(data);
         boolean isAsc = true;
         sortBase.sort(data, isAsc);

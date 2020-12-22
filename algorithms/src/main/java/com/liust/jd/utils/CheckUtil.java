@@ -23,4 +23,12 @@ public class CheckUtil {
         nums[index] = nums[anotherIndex];
         nums[anotherIndex] = temp;
     }
+
+    public static boolean isNull(Object obj){
+        return obj == null;
+    }
+
+    public static boolean isEmpty(int[] nums){
+        return isNull(nums) || nums.length == 0;
+    }
 }

@@ -56,6 +56,20 @@ public abstract class SortBase {
     public static boolean needSort(double[] nums){
         return (CheckUtil.needSort(nums));
     }
+    public void sort(int[] nums, boolean isAsc){
+        if(!needSort(nums)){
+            return;
+        }
 
-    public abstract void sort(int[] nums, boolean isAsc);
+        doSort(nums, isAsc);
+    }
+
+    public void sortForAsc(int[] nums){
+        sort(nums, true);
+    }
+
+    public void sortForDesc(int[] nums){
+        sort(nums, false);
+    }
+    public abstract void doSort(int[] nums, boolean isAsc);
 }

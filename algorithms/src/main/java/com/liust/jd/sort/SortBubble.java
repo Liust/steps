@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class SortBubble extends SortBase{
     @Override
-    public void sort(int[] nums, boolean isAsc) {
+    public void doSort(int[] nums, boolean isAsc) {
         if(!CheckUtil.needSort(nums)){
             return;
         }

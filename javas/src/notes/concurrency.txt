@@ -37,6 +37,76 @@ PhantomRef
 *** WeakHashMap code
 
 v6
+各种容器
+Collection
+    List, Set, Queue
+    (Vector)
+Map
+    HashMap
+    ConcurrentHashMap
+    HashTable
+
+
+2019.10.31
+v7
+interview a1b2c3
+
+ThreadPool
+Executors
+ExecutorService
+1:32min
+
+2019.11.1
+
+ForkJoinPool
+CompletableFuture
+
+2019.11.4
+v8
+0.14.30min wait
+ThreadPoolExecutor
+
+Executors 线程池工厂
+
+singleThreadPool
+单线程池为什么存在
+1 生命周期
+2 队列
+
+不建议使用默认的线程池：
+1 线程名不好
+2 队列太长
+3 会有默认拒绝策略
+
+cachedThreadPool
+1. queue: sychrousBlockQueue
+线程最大integer.maxValue
+直接执行， 不等待
+
+fixedThreadPool
+
+scheduledThreadPool
+queue:delayQueue
+
+ThreadPoolExecutor source code
+1.40.0min addWorker source code
+所有线程共享一个队列
+
+workStealingPool
+ForkJoinPool
+每个线程有自己的队列
+
+2019.11.6
+v9
+2019.11.8
+50min: jmh 微基准测试框架
+51min
+disruptor:
+ringBuffer:
+2:10:00 min
+
+
+
 
 
 
