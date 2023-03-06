@@ -25,4 +25,24 @@ public class Utils {
 
         System.out.println();
     }
+
+    public static void printlnLine(String line){
+        for (int i = 0; i < 50; i++) {
+            System.out.print(line);
+        }
+
+        System.out.println();
+    }
+
+    public static int[] buildArray(int size, int max) {
+        if(size < 1){
+            return null;
+        }
+
+        int[] data = new int[size];
+        for (int i = 0; i < size; i++) {
+            data[i] = Utils.genInt(max);
+        }
+        return data;
+    }
 }
