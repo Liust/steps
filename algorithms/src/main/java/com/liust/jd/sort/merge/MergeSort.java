@@ -1,4 +1,6 @@
-package com.liust.jd.sort;
+package com.liust.jd.sort.merge;
+
+import com.liust.jd.sort.Utils;
 
 public class MergeSort {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.liust.jd.sort;
+package com.liust.jd.sort.merge;
 
 public class MinSum{
 
