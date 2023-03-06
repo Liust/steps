@@ -1,3 +1,5 @@
+package com.liust.jd.sort;
+
 public class MinSum{
 
     public static void main(String[] args) {
@@ -39,7 +41,7 @@ public class MinSum{
         int minLeft = process(arr, left, mid);
         int minRight = process(arr, mid+1, right);
 
-        int mergeSum = mergeAndGetMinSum(arr, left,mid, mid + 1, right);
+        int mergeSum = mergeAndGetMinSum(arr, left, mid, mid + 1, right);
 
         return minLeft + minRight + mergeSum;
     }
