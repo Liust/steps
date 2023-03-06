@@ -12,7 +12,7 @@ public class MergeSort_1 {
         System.out.println("Hello world !! ");
         int[] data = Utils.buildArray(6, 50);
         Utils.printlnArray(data);
-        Utils.printlnLine("-");
+        Utils.printlnSplitLine("-");
         process2(data);
         Utils.printlnArray(data);
     }
@@ -85,23 +85,15 @@ public class MergeSort_1 {
         return left + step -1;
     }
 
-    public static boolean needSort(int[] data){
-        if(data == null || data.length < 2){
-            return false;
-        }
-
-        return true;
-    }
-
     public static void process(int[] data){
-        if(!needSort(data)){
+        if(!Utils.needSort(data)){
             return;
         }
         mergeSort(data, 0, data.length-1);
     }
 
     public static void process2(int[] data){
-        if(!needSort(data)){
+        if(!Utils.needSort(data)){
             return;
         }
         mergeSortNoRecursion(data, 0, data.length-1);

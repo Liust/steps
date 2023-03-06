@@ -26,8 +26,20 @@ public class Utils {
         System.out.println();
     }
 
-    public static void printlnLine(String line){
-        for (int i = 0; i < 50; i++) {
+    public static void println(int data){
+        System.out.println(data);
+    }
+
+    public static void printlnSplitLine(){
+        printlnSplitLine("*");
+    }
+
+    public static void printlnSplitLine(String line){
+        printlnSplitLine(line, 50);
+    }
+
+    public static void printlnSplitLine(String line, int length){
+        for (int i = 0; i < length; i++) {
             System.out.print(line);
         }
 
@@ -44,5 +56,13 @@ public class Utils {
             data[i] = Utils.genInt(max);
         }
         return data;
+    }
+
+    public static boolean needSort(int[] data){
+        if(data == null || data.length < 2){
+            return false;
+        }
+
+        return true;
     }
 }
