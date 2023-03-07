@@ -94,6 +94,14 @@ public class netherLand {
      * @param data
      */
     public static void quickSort1(int[] data){
+        if(!Utils.needSort(data)){
+            return;
+        }
+
+        quickSortPro1(data, 0, data.length-1);
+    }
+
+    private static void quickSortPro1(int[] data, int i, int r) {
 
     }
 }
