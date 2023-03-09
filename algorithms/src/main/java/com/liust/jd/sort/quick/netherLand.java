@@ -9,9 +9,18 @@ import com.liust.jd.sort.Utils;
 public class netherLand {
     public static void main(String[] args) {
         for (int i = 0; i < 10; i++) {
-            testNetherLand2();
+            testQuick1();
         }
 
+    }
+
+    public static void testQuick1(){
+        int[] data = Utils.buildArray(8, 15);
+        Utils.printlnArray(data);
+        Utils.printlnSplitLine();
+        quickSortPro1(data,0,data.length-1);
+        Utils.printlnArray(data);
+        Utils.printlnSplitLine("-");
     }
 
     public static void testNetherLand2(){
@@ -101,7 +110,57 @@ public class netherLand {
         quickSortPro1(data, 0, data.length-1);
     }
 
-    private static void quickSortPro1(int[] data, int i, int r) {
+    private static void quickSortPro1(int[] data, int l, int r) {
+        if(l >= r){
+            return;
+        }
+
+        int pos = partition1(data, l, r);
+
+        quickSortPro1(data, l, pos-1);
+
+        quickSortPro1(data, pos+1, r);
+
+    }
+
+    private static int partition1(int[] data, int l, int r){
+
+        int index = Integer.MAX_VALUE;
+
+        int val = data[r];
+        int cur = l, lessIndex = l-1;
+        while (cur < r){
+            if(data[cur] < val){
+                swap(data, ++lessIndex, cur++);
+            }else if(data[cur] == val){
+                swap(data, ++lessIndex, cur++);
+            }else {
+                cur++;
+            }
+        }
+
+        swap(data, ++lessIndex, r);
+        index = lessIndex;
+
+        return index;
+    }
+
+    private static int[] partition2(int[] data, int l, int r){
+        return null;
+    }
+
+    private static void quickSortPro2(int[] data, int l, int r) {
+        if(l >= r){
+            return;
+        }
+
+        int[] pos = partition2(data, l, r);
+
+        quickSortPro2(data, l, pos[0]);
+
+        quickSortPro2(data, pos[1], r);
+    }
+    private static void quickSortPro3(int[] data, int l, int r) {
 
     }
 }
