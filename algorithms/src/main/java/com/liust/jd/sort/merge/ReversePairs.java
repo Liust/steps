@@ -32,6 +32,18 @@ public class ReversePairs {
         return countLeft + countMid + countRight;
     }
 
+    /**
+     * todo process from the tail
+     * process from the tail
+     * @param data
+     * @param left
+     * @param mid
+     * @param right
+     * @return
+     */
+    public static int mergeFromTail(int[] data, int left, int mid, int right) {
+        return 0;
+    }
     public static int merge(int[] data, int left, int mid, int right) {
         int p1 = left, p2 = mid + 1;
         int size = (right - left + 1);
