@@ -8,22 +8,32 @@ import com.liust.jd.sort.Utils;
  */
 public class netherLand {
     public static void main(String[] args) {
-        for (int i = 0; i < 10; i++) {
-            testQuick1();
+        for (int i = 0; i < 5; i++) {
+//            testQuick1(8, 15);
+            testQuick2(10, 15);
         }
 
     }
 
-    public static void testQuick1(){
-        int[] data = Utils.buildArray(8, 15);
+    public static void testQuick1(int size, int max) {
+        int[] data = Utils.buildArray(size, max);
         Utils.printlnArray(data);
         Utils.printlnSplitLine();
-        quickSortPro1(data,0,data.length-1);
+        quickSortPro1(data, 0, data.length - 1);
         Utils.printlnArray(data);
         Utils.printlnSplitLine("-");
     }
 
-    public static void testNetherLand2(){
+    public static void testQuick2(int size, int max) {
+        int[] data = Utils.buildArray(size, max);
+        Utils.printlnArray(data);
+        Utils.printlnSplitLine();
+        quickSortPro1(data, 0, data.length - 1);
+        Utils.printlnArray(data);
+        Utils.printlnSplitLine("-");
+    }
+
+    public static void testNetherLand2() {
 
         int[] data = Utils.buildArray(8, 5);
         Utils.printlnArray(data);
@@ -33,65 +43,65 @@ public class netherLand {
         Utils.printlnSplitLine("-");
     }
 
-    public static void netherLand1(int[] data){
-        if(!Utils.needSort(data)){
+    public static void netherLand1(int[] data) {
+        if (!Utils.needSort(data)) {
             return;
         }
 
         netherLandPro1(data, 0, data.length - 1);
     }
 
-    public static void swap(int[] data, int i, int j){
+    public static void swap(int[] data, int i, int j) {
         int temp = data[i];
         data[i] = data[j];
         data[j] = temp;
     }
 
-    public static void netherLandPro1(int[] data, int l, int r){
-        if(l==r){
+    public static void netherLandPro1(int[] data, int l, int r) {
+        if (l == r) {
             return;
         }
 
-        int lessIndex = l-1;
+        int lessIndex = l - 1;
         int cur = l;
         int val = data[r];
 
-        while (cur <= r){
-            if(data[cur] <= val){
+        while (cur <= r) {
+            if (data[cur] <= val) {
                 swap(data, ++lessIndex, cur++);
-            }else{
+            } else {
                 cur++;
             }
         }
 
     }
 
-    public static void netherLand2(int[] data){
+    public static void netherLand2(int[] data) {
 
-        if(!Utils.needSort(data)){
+        if (!Utils.needSort(data)) {
             return;
         }
 
         netherLandPro2(data, 0, data.length - 1);
     }
 
-    public static void netherLandPro2(int[] data, int l, int r){
-        if(l==r){
+    public static void netherLandPro2(int[] data, int l, int r) {
+        if (l == r) {
             return;
         }
 
         int val = data[r];
         int cur = l;
-        int lessIndex = l-1;
-        int moreIndex = r+1;
+        int lessIndex = l - 1;
+        int moreIndex = r + 1;
 
-        while (cur < moreIndex){
-            if(data[cur] < val){// < val
+        while (cur < moreIndex) {
+            if (data[cur] < val) {// < val
                 swap(data, ++lessIndex, cur++);
-            }else if(data[cur] == val){ // == val
+            } else if (data[cur] == val) { // == val
                 cur++;
-            }else{//>val
-                swap(data, --moreIndex,cur);
+            } else {//>val
+                swap(data, --moreIndex, cur);
             }
         }
     }
@@ -100,41 +110,42 @@ public class netherLand {
      * 1 quick sort 1
      * 2 quick sort 2
      * 3 quick sort 3
+     *
      * @param data
      */
-    public static void quickSort1(int[] data){
-        if(!Utils.needSort(data)){
+    public static void quickSort1(int[] data) {
+        if (!Utils.needSort(data)) {
             return;
         }
 
-        quickSortPro1(data, 0, data.length-1);
+        quickSortPro1(data, 0, data.length - 1);
     }
 
     private static void quickSortPro1(int[] data, int l, int r) {
-        if(l >= r){
+        if (l >= r) {
             return;
         }
 
         int pos = partition1(data, l, r);
 
-        quickSortPro1(data, l, pos-1);
+        quickSortPro1(data, l, pos - 1);
 
-        quickSortPro1(data, pos+1, r);
+        quickSortPro1(data, pos + 1, r);
 
     }
 
-    private static int partition1(int[] data, int l, int r){
+    private static int partition1(int[] data, int l, int r) {
 
         int index = Integer.MAX_VALUE;
 
         int val = data[r];
-        int cur = l, lessIndex = l-1;
-        while (cur < r){
-            if(data[cur] < val){
+        int cur = l, lessIndex = l - 1;
+        while (cur < r) {
+            if (data[cur] < val) {
                 swap(data, ++lessIndex, cur++);
-            }else if(data[cur] == val){
+            } else if (data[cur] == val) {
                 swap(data, ++lessIndex, cur++);
-            }else {
+            } else {
                 cur++;
             }
         }
@@ -145,12 +156,31 @@ public class netherLand {
         return index;
     }
 
-    private static int[] partition2(int[] data, int l, int r){
-        return null;
+    private static int[] partition2(int[] data, int l, int r) {
+        int[] pos = new int[2];
+
+        int lessIndex = l - 1;
+        int moreIndex = r, cur = l;
+        while (cur < moreIndex) {
+            if (data[cur] < data[r]) {
+                swap(data, ++lessIndex, cur++);
+            } else if (data[cur] == data[r]) {
+                cur++;
+            } else {
+                swap(data, --moreIndex, cur);
+            }
+        }
+
+        swap(data, moreIndex, r);
+
+        pos[0] = lessIndex + 1;
+        pos[1] = moreIndex;
+
+        return pos;
     }
 
     private static void quickSortPro2(int[] data, int l, int r) {
-        if(l >= r){
+        if (l >= r) {
             return;
         }
 
@@ -160,6 +190,7 @@ public class netherLand {
 
         quickSortPro2(data, pos[1], r);
     }
+
     private static void quickSortPro3(int[] data, int l, int r) {
 
     }
