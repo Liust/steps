@@ -8,9 +8,10 @@ import com.liust.jd.sort.Utils;
  */
 public class netherLand {
     public static void main(String[] args) {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 3; i++) {
 //            testQuick1(8, 15);
-            testQuick2(7, 3);
+//            testQuick2(7, 10);
+            testQuick3(7, 4);
         }
 
     }
@@ -29,6 +30,15 @@ public class netherLand {
         Utils.printlnArray(data);
         Utils.printlnSplitLine();
         quickSortPro2(data, 0, data.length - 1);
+        Utils.printlnArray(data);
+        Utils.printlnSplitLine("*");
+    }
+
+    public static void testQuick3(int size, int max) {
+        int[] data = Utils.buildArray(size, max);
+        Utils.printlnArray(data);
+        Utils.printlnSplitLine();
+        quickSortPro3(data, 0, data.length - 1);
         Utils.printlnArray(data);
         Utils.printlnSplitLine("*");
     }
@@ -186,23 +196,56 @@ public class netherLand {
 
         int[] pos = partition2(data, l, r);
 
-        quickSortPro2(data, l, pos[0]-1);
+        quickSortPro2(data, l, pos[0] - 1);
 
-        quickSortPro2(data, pos[1]+1, r);
+        quickSortPro2(data, pos[1] + 1, r);
     }
 
     /**
      * todo: random index as the target value
+     *
      * @param data
      * @param l
      * @param r
      */
     private static void quickSortPro3(int[] data, int l, int r) {
+        if (l >= r) {
+            return;
+        }
 
+        int index = l + Utils.genInt(r - l + 1);
+        swap(data, index, r);
+        int[] pos = partition3(data, l, r);
+        quickSortPro3(data, l, pos[0] - 1);
+        quickSortPro3(data, pos[1] + 1, r);
+    }
+
+    public static int[] partition3(int[] data, int l, int r) {
+        int lessIndex = l - 1, moreIndex = r;
+        int val = data[r], index = l;
+
+        while (index < moreIndex) {
+            if (data[index] < val) {
+                swap(data, ++lessIndex, index++);
+            } else if (data[index] == val) {
+                index++;
+            } else {
+                swap(data, index, --moreIndex);
+            }
+        }
+
+        swap(data, r, moreIndex);
+
+        int[] pos = new int[2];
+        pos[0] = lessIndex+1;
+        pos[1] = moreIndex;
+
+        return pos;
     }
 
     /**
      * todo:  with stack and no recursive
+     *
      * @param data
      * @param l
      * @param r
