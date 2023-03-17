@@ -50,24 +50,24 @@ public class Merge_MoreThanRightTwice {
      * @return
      */
     public static int mergeAndCountTwice(int[] data, int l, int mid, int r) {
-        int p1 = l, p2 = mid + 1;
-        int size = r - l + 1, index = 0;
+        int p1 = mid, p2 = r;
+        int size = r - l + 1, index = size-1;
         int[] help = new int[size];
         int count = 0;
 
-        while (p1 <= mid && p2 <= r) {
+        while (p1 >= l && p2 >= mid+1) {
             if (data[p1] > data[p2] * 2) {
                 count += (mid - p1 + 1) * (p2 - mid);
             }
-            help[index++] = data[p1] > data[p2] ? data[p2++] : data[p1++];
+            help[index--] = data[p1] > data[p2] ? data[p1--] : data[p2 --];
         }
 
-        while (p1 <= mid) {
-            help[index++] = data[p1++];
+        while (p1 >= l) {
+            help[index--] = data[p1--];
         }
 
-        while (p2 <= r) {
-            help[index++] = data[p2++];
+        while (p2 >= mid+1) {
+            help[index--] = data[p2--];
         }
 
         for (int i = 0; i < help.length; i++) {
