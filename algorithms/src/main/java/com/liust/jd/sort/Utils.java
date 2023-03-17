@@ -31,7 +31,7 @@ public class Utils {
     }
 
     public static void printlnSplitLine(){
-        printlnSplitLine("*");
+        printlnSplitLine("-");
     }
 
     public static void printlnSplitLine(String line){

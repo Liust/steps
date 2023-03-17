@@ -10,7 +10,7 @@ public class netherLand {
     public static void main(String[] args) {
         for (int i = 0; i < 5; i++) {
 //            testQuick1(8, 15);
-            testQuick2(10, 15);
+            testQuick2(7, 3);
         }
 
     }
@@ -28,9 +28,9 @@ public class netherLand {
         int[] data = Utils.buildArray(size, max);
         Utils.printlnArray(data);
         Utils.printlnSplitLine();
-        quickSortPro1(data, 0, data.length - 1);
+        quickSortPro2(data, 0, data.length - 1);
         Utils.printlnArray(data);
-        Utils.printlnSplitLine("-");
+        Utils.printlnSplitLine("*");
     }
 
     public static void testNetherLand2() {
@@ -186,12 +186,28 @@ public class netherLand {
 
         int[] pos = partition2(data, l, r);
 
-        quickSortPro2(data, l, pos[0]);
+        quickSortPro2(data, l, pos[0]-1);
 
-        quickSortPro2(data, pos[1], r);
+        quickSortPro2(data, pos[1]+1, r);
     }
 
+    /**
+     * todo: random index as the target value
+     * @param data
+     * @param l
+     * @param r
+     */
     private static void quickSortPro3(int[] data, int l, int r) {
+
+    }
+
+    /**
+     * todo:  with stack and no recursive
+     * @param data
+     * @param l
+     * @param r
+     */
+    private static void quickSortProNoRecursive(int[] data, int l, int r) {
 
     }
 }
